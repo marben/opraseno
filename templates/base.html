@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% if title is defined %}
+			{{ title }}
+			{% else %}
+			Oprášeno
+			{% endif %}
+		</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="static/css/style.css">
+		<link rel="shortcut icon" type="image/png" href="/static/img/favicon32.png"/>
+	</head>
+	<body>
+		<div class="background"></div>
+			<nav class="navbar navbar-default navbar-fixed-top header">
+				<div class="containter-fluid">
+					<div class="col-sm-1">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse" data-target="#collapsemenu"
+								aria-expanded="false">
+								<span class="sr-only">Zobraz navigaci</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand hidden-xs" href="/">
+								<img src="static/img/opraseno-logo-vertical.svg">
+							</a>
+							<a class="navbar-brand hidden-sm hidden-md hidden-lg" href="/" style="padding: 5px;">
+							<img src="static/img/logo-small.svg" style="max-height: 40px;">
+							</a>
+						</div>
+					</div>	<!-- col-sm-1 -->
+					<div class="col-sm-offset-1 col-sm-9">
+						<div class="collapse navbar-collapse" id="collapsemenu">
+							<ul class="nav navbar-nav nav-justified">
+								<li{% if active_page=="co_jsme" %} class="active"{%endif%}>
+									<a href="co_jsme">Co jsme</a>
+								</li>
+								<li{% if active_page=="co_mame" %} class="active"{%endif%}>
+									<a href="co_mame">Co máme</a>
+								</li>
+								<li{% if active_page=="co_pujcujeme" %} class="active"{%endif%}>
+									<a href="co_pujcujeme">Co půjčujeme</a>
+								</li>
+								<li{% if active_page=="co_umime" %} class="active"{%endif%}>
+									<a href="co_umime">Co umíme</a>
+								</li>
+								<li{% if active_page=="kontakt" %} class="active"{%endif%}>
+									<a href="kontakt">Contakt</a>
+								</li>
+							</ul>
+						</div> <!-- /.navbar-collapse -->
+					</div> <!-- col-sm -->
+			</div> <!-- .container-fluid -->
+			</nav>
+		<!-- <header class="navbar-fixed-top">
+			<nav class="navbar navbar-default">
+			<div class="row">
+				<a href="/">
+					<img src="static/img/opraseno-logo-vertical.svg" class="logo">
+				</a>
+				<div class="containter-fluid">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#collapsemenu"
+						aria-expanded="false">
+						<span class="sr-only">Zobraz navigaci</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="col-sm-offset-2 col-sm-9">
+						<div class="collapse navbar-collapse" id="collapsemenu">
+							<ul class="nav nav-pills nav-justified">
+								<li{% if active_page=="co_jsme" %} class="active"{%endif%}>
+									<a href="co_jsme">Co jsme</a>
+								</li>
+								<li{% if active_page=="co_mame" %} class="active"{%endif%}>
+									<a href="co_mame">Co máme</a>
+								</li> -->
+								<!-- <li class="dropdown{% if active_page=="co_mame" %} active{%endif%}">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">Co máme <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+										<li><a tabindex="-1" href="#">Renovováno</a></li>
+										<li><a tabindex="-1" href="#">Před renovací</a></li>
+										<li><a tabindex="-1" href="#">Prodáno</a></li>
+									</ul>
+								</li> -->
+								<!-- <li {% if active_page=="co_pujcujeme" %} class="active"{%endif%}>
+									<a href="co_pujcujeme">Co půjčujeme</a>
+								</li>
+								<li {% if active_page=="co_umime" %} class="active"{%endif%}>
+									<a href="co_umime">Co umíme</a>
+								</li>
+								<li {% if active_page=="kontakt" %} class="active"{%endif%}>
+									<a href="kontakt">Contakt</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</nav>
+		</header> -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-offset-2 col-sm-9">
+					<div class="content">
+						{% block content %}{% endblock %}
+					</div>
+				</div>
+			</div> <!-- row -->
+		</div> <!-- container -->
+		<!-- </div> -->
+		<footer class="footer text-center">
+			<div class="hline"></div>
+			<div class="container-fluid">
+					Březinova 17,<br>
+					v Karlíně, Praha 8
+			</div>
+		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
+</html>

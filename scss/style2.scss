@@ -1,0 +1,263 @@
+$accentColor: #00cf00;
+$accentColorTint: lighten( $accentColor, 50%);
+
+$navbarHeight: 4rem;	// TODO: this should be set automatically. for now we just
+// use an artificial value for later calculations
+
+// $firstSectionMargin: 40rem; // amount of space before the first section
+// $firstSectionMargin: calc(100vh - #{$navbarHeight}); // amount of space before the first section
+// $firstSectionMargin: calc(100vh - #{$navbarHeight}); // amount of space before the first section
+$firstSectionMargin: calc(100vh); // amount of space before the first section
+
+html {
+		font-size: 120%;
+}
+
+body {
+	background-color: transparent;
+	font-family: 'Idealista', 'Alegreya Sans SC', sans-serif;
+	position: relative;	// for scrollspy
+}
+
+@font-face {
+	font-family: "Idealista";
+	src: url("../font/Idealista-Light.otf") format("opentype");
+}
+
+html {
+	background-color: black;
+	// background: url("../img/bg-small.jpg") no-repeat center center fixed;
+	background-image: url("../img/bg-small.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+
+	//  background: url("../img/bg.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+	height: 100%; // to make the 'background-size: cover' work on android chrome
+	min-height: 100%; // to make the 'background-size: cover' work on android chrome
+	// min-height: 100%;
+}
+
+@media (min-width: 576px) {
+	html {
+		background-image: url("../img/bg-medium.jpg")
+	}
+}
+
+@media (min-width: 992px) {
+	html {
+		background-image: url("../img/bg-big.jpg");
+	}
+}
+
+.logo_circle {
+	position: fixed;
+
+	// center horizontally
+	left: 50%;
+	transform: translateX(-50%);
+
+	$logoMarginTop: $navbarHeight + 1rem;
+
+	margin-top: $logoMarginTop;
+	height: calc(#{$firstSectionMargin} - #{$logoMarginTop} - 4rem);
+
+	& img {
+		display: block;
+		height: 100%;
+		width: auto;
+	}
+}
+
+.main-container {
+	padding: 0;
+}
+
+.map-div {
+	// filter: grayscale(100%);
+}
+
+.navbar {
+	background-color: rgba(0, 0 ,0, 0.4);
+	font-weight: bold;
+	text-transform: uppercase;
+	// height: $navbarHeight; // if we set this, the navbar will not get thicker when the window gets smaller
+}
+
+@media (max-width: 768px) {
+	.navbar-padding {
+		display: none !important;
+	}
+}
+
+.navbar-brand {
+	// height: inherit;
+	// align-items: center;
+	// text-align: center;
+	opacity: 0.0;
+	& img {
+		// display: inline-block;
+		// max-height: $navbarHeight;
+		position: relative;
+		// top: 0%;
+		transform: translateY(-10%);
+		// align-self: center;
+		max-height: 2rem;
+	}
+}
+
+
+// the out-most wrapper around each section
+// abstract
+.section {
+	margin-top: 9rem;
+	border-radius: 5px;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#co_mame_content {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.section-first {
+	margin-top: $firstSectionMargin;
+}
+
+.section-label {
+	margin-top: 1rem;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.subsection {
+	margin-top: 2rem;
+}
+
+.accented-section {
+	@extend .section;
+	background-color: $accentColorTint;
+}
+
+.white-section {
+	@extend .section;
+	background-color: white;
+}
+
+.inner-section {
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
+
+h2 {
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+
+.section-left {
+	@extend h2;
+	// because of the world 'starozitnostmi' is long, we need to break it
+	overflow-wrap: break-word;
+	hyphens: auto; // currently not working
+}
+
+
+// a hack to prevent card-img-top from stretching. might be fixed in bootstrap > 4 - alpha 6
+.card-img-top {
+	width: 100%;
+}
+
+.card {
+	border: none;
+}
+
+.section-title {
+	h1 {
+		font-size: 1rem;
+		display: inline-block;
+		color: black;
+		// underline
+		&:after {
+			content: '';
+			height: 3px;
+			background: $accentColor;
+			display: block;
+			margin-top: 3px;
+		}
+	}
+}
+
+.no-side-margin {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.swiper-container {
+	// width: inherit;
+	overflow: hidden;
+}
+
+$carousel-arrow-size: 6rem;
+$carousel-arrow-color: grey;
+$carouselSidePadding: $carousel-arrow-size / 2;
+.zbozi-carousel-container {
+	@extend .section;
+	margin: 0;
+	padding-left: $carouselSidePadding;
+	padding-right: $carouselSidePadding;
+	padding-bottom: 2rem;
+	background-color: white;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.zbozi-carousel {
+	background-color: white;
+	width: 100%;
+	overflow: none;
+}
+
+$carousel-height: 250px;
+.zbozi-item {
+	margin-left: 1px;
+	margin-right: 1px;
+
+	// display: flex;
+	// justify-content: center;
+
+	& img {
+		height: $carousel-height;
+	}
+}
+
+$carousel-button-shift: $carousel-arrow-size / 4; // just a guess
+.slick-prev{
+	left: -1 * $carousel-button-shift - 1rem;
+}
+.slick-next {
+	right: -1 * $carousel-button-shift;
+}
+
+.slick-button {
+	font-family: FontAwesome;
+	font-size: $carousel-arrow-size;
+
+	display: block;
+	margin-top: -1 * ($carousel-arrow-size / 2);
+	color: $carousel-arrow-color;
+}
+
+.slick-prev::before {
+	@extend .slick-button;
+	content: "\f104";
+}
+.slick-next::before {
+	@extend .slick-button;
+	content:  "\f105";
+}
